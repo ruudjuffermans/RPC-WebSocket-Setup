@@ -1,0 +1,15 @@
+services:
+  machine:
+    build: ./machine
+    ports:
+      - "8000:8000"
+    restart: always
+  client:
+    container_name: client
+    build: ./client
+    ports:
+      - "5002:5002"
+    volumes:
+      - ./client/src:/usr/src/app/src
+      - /usr/src/app/node_modules   
+    restart: always
